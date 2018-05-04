@@ -14,4 +14,4 @@
 \Illuminate\Support\Facades\Route::get('/', 'PostsController@index');
 \Illuminate\Support\Facades\Route::get('/posts/create', 'PostsController@create');
 \Illuminate\Support\Facades\Route::post('/posts', 'PostsController@store');
-//\Illuminate\Support\Facades\Route::get('/posts/{post}', 'PostsController@show');
+\Illuminate\Support\Facades\Route::get('/posts/{post}', 'PostsController@show');
