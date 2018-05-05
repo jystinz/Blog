@@ -7,6 +7,11 @@ use App\Post;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function index()
     {
         $posts = Post::latest()->get();
@@ -36,7 +41,12 @@ class PostsController extends Controller
 
 //        Post::create(\request()->all());
 
-        Post::create(\request(['title', 'body']));
+        // แบบเก่าก่อนจะมี auth
+//        Post::create(\request(['title', 'body']));
+        // แบบใหม่หลังมี auth
+        auth()->user()->publish(
+            new Post(\request(['title', 'body']))
+        );
 
 //        Post::create([
 //            'title' => \request('title'),
